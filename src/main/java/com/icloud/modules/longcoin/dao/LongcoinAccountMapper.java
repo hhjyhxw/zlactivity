@@ -9,7 +9,7 @@ import java.util.Map;
  * 龙币账号参数管理
  * @author zdh
  * @email yyyyyy@cm.com
- * @date 2020-11-12 14:09:18
+ * @date 2020-11-12 16:32:46
  */
 public interface LongcoinAccountMapper extends BaseMapper<LongcoinAccount> {
 

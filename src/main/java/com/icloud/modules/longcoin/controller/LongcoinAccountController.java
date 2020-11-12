@@ -1,22 +1,18 @@
 package com.icloud.modules.longcoin.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-import com.icloud.basecommon.model.Query;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import com.icloud.modules.longcoin.entity.LongcoinAccount;
-import com.icloud.modules.longcoin.service.LongcoinAccountService;
 import com.icloud.basecommon.model.Query;
 import com.icloud.common.PageUtils;
 import com.icloud.common.R;
 import com.icloud.common.validator.ValidatorUtils;
+import com.icloud.modules.longcoin.entity.LongcoinAccount;
+import com.icloud.modules.longcoin.service.LongcoinAccountService;
 import com.icloud.modules.sys.controller.AbstractController;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.Map;
 
 
 /**
@@ -24,7 +20,7 @@ import com.icloud.modules.sys.controller.AbstractController;
  *
  * @author zdh
  * @email yyyyyy@cm.com
- * @date 2020-11-12 14:09:18
+ * @date 2020-11-12 16:32:46
  * 菜单主连接： modules/longcoin/longcoinaccount.html
  */
 @RestController
