@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <title></title>
+    <#include "/header.html">
+
+    <style>
+        .footer{
+            display: flex;
+            justify-content: center;
+            padding:1rem;
+
+        }
+        .footer .btn_confin_ok{
+            border-radius: 6px;
+            width: 66%;
+            background-color: blue;
+            color: white;
+            height: 3.5rem;
+            line-height: 3.5rem;
+            font-size: 1.6rem;
+            margin-top: 3rem;
+            border: none;
+            text-align:center;
+        }
+        .error_content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 5rem;
+            font-size: 2rem;
+            color: rgb(255, 102, 0);
+            align-items: center;
+        }
+        .error_content .fairimg{
+            height:5rem;
+            width:5rem;
+            margin-bottom:2rem;
+        }
+        .error_content .successimg{
+            height:5rem;
+            width:5rem;
+            margin-bottom:2rem;
+        }
+        .msgcolor_fair{
+
+        }
+        .msgcolor_success{
+            color:red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="icloudapp" v-cloak>
+
+
+    <!--扫码结果显示-->
+    <div v-if="showresult">
+        <!--核销失败-->
+        <div class="error_content" v-if="!verifySuccess">
+            <img class="fairimg" src="${request.contextPath}/statics/images/bsactivity/fair.png"/>
+            <div class="msgcolor_fair">
+                {{msg}}
+            </div>
+        </div>
+        <!--核销成功-->
+        <div class="error_content" v-if="verifySuccess">
+            <img class="successimg" src="${request.contextPath}/statics/images/bsactivity/success.png"/>
+            <div  class="msgcolor_success">
+                核销成功
+            </div>
+        </div>
+    </div>
+    <!--底部-->
+    <div class="footer">
+        <div  class="btn_confin_ok" @click="saoyisao">扫码核销卡券</div>
+    </div>
+</div>
+
+<script src=" https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="${request.contextPath}/statics/js/front/card/goverify.js?_${.now?long}"></script>
+</body>

@@ -1,0 +1,5 @@
+#商品二维码表
+CREATE  UNIQUE INDEX  bsactivity_goodsqcode_goodid_index on  t_bsactivity_goodsqcode (goodsid);
+
+
+#订单表

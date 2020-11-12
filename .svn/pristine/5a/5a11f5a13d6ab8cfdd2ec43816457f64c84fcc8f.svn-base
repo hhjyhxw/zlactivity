@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.icloud.modules.longcoin.dao.LongcoinAccountMapper">
+
+
+    <!-- 基础map -->
+    <resultMap type="com.icloud.modules.longcoin.entity.LongcoinAccount" id="BaseResultMap">
+     <id property="id" column="id"/>
+     <result property="sid" column="sid"/>
+     <result property="signkey" column="signkey"/>
+     <result property="rechargetype" column="rechargetype"/>
+     <result property="consumetype" column="consumetype"/>
+     <result property="queryUrl" column="query_url"/>
+     <result property="rechargeUrl" column="recharge_url"/>
+     <result property="consumeUrl" column="consume_url"/>
+     <result property="dataFileDir" column="data_file_dir"/>
+     <result property="dataBakDir" column="data_bak_dir"/>
+     <result property="longcoinDataBill" column="longcoin_data_bill"/>
+     <result property="activityNam" column="activity_nam"/>
+    </resultMap>
+
+   <!-- 基础字段列 -->
+   <sql id="Base_Column_List" >
+id,sid,signkey,rechargetype,consumetype,query_url,recharge_url,consume_url,data_file_dir,data_bak_dir,longcoin_data_bill,activity_nam
+    </sql>
+
+
+<select id="queryMixList" resultMap="BaseResultMap">
+select * from t_longcoin_account t
+<where>
+<if test="id != null">
+    and t.id = #{id}
+</if>
+<if test="sid != null">
+    and t.sid = #{sid}
+</if>
+<if test="signkey != null">
+    and t.signkey = #{signkey}
+</if>
+<if test="rechargetype != null">
+    and t.rechargetype = #{rechargetype}
+</if>
+<if test="consumetype != null">
+    and t.consumetype = #{consumetype}
+</if>
+<if test="queryUrl != null">
+    and t.query_url = #{queryUrl}
+</if>
+<if test="rechargeUrl != null">
+    and t.recharge_url = #{rechargeUrl}
+</if>
+<if test="consumeUrl != null">
+    and t.consume_url = #{consumeUrl}
+</if>
+<if test="dataFileDir != null">
+    and t.data_file_dir = #{dataFileDir}
+</if>
+<if test="dataBakDir != null">
+    and t.data_bak_dir = #{dataBakDir}
+</if>
+<if test="longcoinDataBill != null">
+    and t.longcoin_data_bill = #{longcoinDataBill}
+</if>
+    <if test="sql_filter != null and sql_filter!=''">
+        and ${sql_filter}
+    </if>
+</where>
+ <if test="sidx != null and sidx!=''">
+    order by ${sidx} ${sord}
+</if>
+</select>
+</mapper>

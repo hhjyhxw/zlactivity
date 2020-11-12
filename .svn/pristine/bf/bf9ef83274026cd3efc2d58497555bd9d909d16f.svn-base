@@ -1,0 +1,35 @@
+dataSources:
+  ds0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://gz-cdb-o77g5le8.sql.tencentcdb.com:63194/ldscdb?useUnicode=true&characterEncoding=utf-8
+    username: ldsctest
+    password: nnyr2018
+#  ds1: !!com.alibaba.druid.pool.DruidDataSource
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://gz-cdb-o77g5le8.sql.tencentcdb.com:63194/haiyun_pay_test?useUnicode=true&characterEncoding=utf-8
+#    username: haiyun_pay_test
+#    password: nnyr2019
+shardingRule:
+  tables:
+    t_scanactivity_user_scanrecord:
+      actualDataNodes: ds0.t_scanactivity_user_scanrecord_${0..5}  #数据节点
+      databaseStrategy:
+        inline:
+          shardingColumn: userid
+          algorithmExpression: ds0
+      tableStrategy:
+        inline:
+          shardingColumn: userid
+          algorithmExpression: t_scanactivity_user_scanrecord_${userid % 6}
+      keyGeneratorColumnName: id
+  bindingTables:
+    - t_scanactivity_user_scanrecord,sys_dept
+  defaultDataSourceName: ds0
+  defaultDatabaseStrategy:
+    inline:
+      shardingColumn: userid
+      algorithmExpression: ds0
+  defaultTableStrategy:
+    none:
+  props:
+    sql.show: true
