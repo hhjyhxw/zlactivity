@@ -41,5 +41,8 @@ select * from ${tableName} t
         and ${sql_filter}
     </if>
 </where>
+ <if test="sidx != null and sidx!=''">
+    order by ${sidx} ${sord}
+</if>
 </select>
 </mapper>
